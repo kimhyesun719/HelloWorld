@@ -1,0 +1,24 @@
+package practice1.run;
+
+import practice1.model.vo.Animal;
+import practice1.model.vo.Cat;
+import practice1.model.vo.Dog;
+
+public class AnimalManager {
+
+	public static void main(String[] args) {
+		Animal[] arr = new Animal[5];
+		
+		arr[0] = new Dog("ºù±×´Ï", "¿äÅ©¼Å", 3);
+		arr[1] = new Dog("º¸¹Ì", "Çªµé", 4);
+		arr[2] = new Cat("µÅ¼­´Ï", "ÄÚ¸®¾Æ¼ôÇì¾î", "¿ì¸®Áý", "±î¸¸»ö");
+		arr[3] = new Cat("¾Æ¿ËÀÌ", "·¯½Ã¾Èºí·ç", "¿ì¸®Áý", "ÇÏ¾á»ö");
+		arr[4] = new Dog("ºùº½", "¿äÅ°Çª", 4);
+		
+		for(Animal a : arr) {
+			a.speak();
+		}
+		
+	}
+
+}
