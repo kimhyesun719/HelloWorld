@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <h3>* 필터 관련 선택자</h3>
+
+    <table border="1">
+        <tr>
+            <th>이름</th>
+            <th>혈액형</th>
+            <th>거주지</th>
+        </tr>
+        <tr>
+            <td>김혜선</td>
+            <td>B형</td>
+            <td>서울</td>
+        </tr>
+        <tr>
+            <td>짱보미</td>
+            <td>O형</td>
+            <td>사당동</td>
+        </tr>
+        <tr>
+            <td>윤아영</td>
+            <td>O형</td>
+            <td>경기도</td>
+        </tr>
+        <tr>
+            <th colspan="2">총인원</th>
+            <td>3명</td>
+        </tr>
+    </table>
+
+    <script>
+        $(function(){
+            $("tr:first").css("backgroundColor","black").css("color","white");
+            $("tr:last").css({backgroundColor:"red",color:"white"});
+            $("tr:even").css("backgroundColor","lightgray");
+            $("tr:odd").css("backgroundColor","yellow");
+        })
+    </script>
+
+    <hr>
+
+    <h3>* 필터링과 관련된 메소드</h3>
+    <p>
+        기준이되는 요소 중에서 특정 요소만을 걸러서 선택해주는 메소드 <br>
+        firsr(), last(), filter(), eq(), not()
+    </p>
+
+    <h4 class="test">tesst-1</h4>
+    <h4 class="test">tesst-2</h4>
+    <h4 class="test">tesst-3</h4>
+    <h4 class="test">tesst-4</h4>
+    <h4>tesst-5</h4>
+    <h4 class="test">tesst-6</h4>
+
+    <script>
+        $(function(){
+            $("h4").first().css("font-size", "20px");
+            $("h4").last().css("font-size", "30px");
+
+            $("h4").filter(".test").html("뻐꾺뻐꾹");
+            $("h4").not(".test").css("color","red");
+
+            $("h4").eq(2).text("eq로 선택됨");
+            
+        })
+    </script>
+
+</body>
+</html>
