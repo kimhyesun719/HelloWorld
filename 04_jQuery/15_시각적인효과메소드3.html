@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        div{
+            background: beige;
+            border: 1px solid lightgrey;
+            width: 300px;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+        p{
+            border: 1px solid lightgrey;
+            width: 300px;
+            height: 80px;
+            line-height: 30px;
+            border-radius: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h3>* slideDown()과 slideUp()</h3>
+
+    <div>Q. 반품 언제 되나요?</div>
+    <p>A. 지금 확인중입니다 ㅋㅋ</p>
+
+    <div>Q. 상품 위치 어디인가요.</div>
+    <p>A. 배송 조회 해봐 ㅋㅋ 콱 ㅋ</p>
+
+    <div>Q. 사이즈 있나요.</div>
+    <p>A. 없어 그런거</p>
+
+    <div>Q. 판매자와 연락이 안됩니다.</div>
+    <p>A. 안타깝ㅋㅋ</p>
+
+    <div>Q. 연락 가능한 시간을 알려주세요.</div>
+    <p>A. 9-18 ㅋㅋ 이 이후 연락하면 죽는다 ㅋㅋ</p>
+
+
+    <script>
+        $(function(){
+            $("div").click(function(){
+                // $(this) : 클릭이벤트가 발생한 div요소
+                // $(this).next() : 클릭이벤트가 발생한 div요소 뒤에 있는 p요소
+
+                const $p = $(this).next(); // jQuery 방식으로 선택된 요소를 담아줄때 변수명 앞에$를 붙임
+
+                if($p.css("display") == "none"){
+                    // 전체 닫기
+                    $(this).siblings("p").slideUp();
+                    // 보여지게끔
+                    $p.slideDown();
+                }else{
+
+                    // 사라지게끔
+                    $p.slideUp();
+
+                }
+
+            })
+        })
+    </script>
+
+</body>
+</html>
