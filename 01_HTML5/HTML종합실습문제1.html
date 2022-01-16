@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML종합실습문제1</title>
+
+    <style>
+
+        input[type="checkbox"] {
+            background-color: rgb(169, 169, 169);
+            border: 0;
+            color: darkgrey;
+            background: darkgrey;
+        }
+
+    </style>
+
+</head>
+<body>
+    <br>
+    고객명 : 
+    <input type="text" name="cname">
+    <br><br>
+    전화번호 :
+    <input type="phone" name="phone">
+    <br><br>
+    E-mail :
+    <input type="email" name="email">
+    <br><br>
+
+    <form action="test.do">
+        <fieldset>
+            <legend>피자 사이즈</legend>
+            <input type="radio" id="radioS" name="size" value="S">
+            <label for="radioS">Small</label>
+            <br> <br>
+            <input type="radio" id="radioM" name="size" value="M">
+            <label for="radioM">Medium</label>
+            <br> <br>
+            <input type="radio" id="radioL" name="size" value="L">
+            <label for="radioL">Large</label>
+            <br> <br>
+        </fieldset>
+    </form>
+
+    <form action="test.do">
+        <fieldset>
+            <legend>토핑 선택</legend>
+            <input type="checkbox" id="checkboxB" name="topping" value="B">
+            <label for="checkboxB">베이컨</label>
+            <br> <br>
+            <input type="checkbox" id="checkboxC" name="topping" value="C">
+            <label for="checkboxC">치즈</label>
+            <br> <br>
+            <input type="checkbox" id="checkboxA" name="topping" value="A">
+            <label for="checkboxA">양파</label>
+            <br> <br>
+            <input type="checkbox" id="checkboxP" name="topping" value="P">
+            <label for="checkboxP">버섯</label>
+            <br> <br>
+        </fieldset>
+    </form>
+
+    <form action="https://www.naver.com">
+        <br>
+        희망 배송 시간 : <input type="time" name="timeIn">
+        <br> <br>
+        배송 시 요청사항 : <textarea name="content"></textarea>
+        <br> <br>
+        <input type="submit" value="주문하기">
+    </form>
+
+
+</body>
+</html>
