@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>변수와 자료형</h1>
+    <h2>변수 선언시 var 뿐 아니라 let, const를 이용해서 선언 가능</h2>
+
+    <h3>* var, let, const의 차이점</h3>
+
+    <h4>1) 변수 선언 방법</h4>
+    <button onclick="diffDeclare();">클릭</button>
+
+    <h4>2) 스코프(사용가능 범위)</h4>
+    <button onclick="diffScope();">클릭</button>
+
+    <script>
+        function diffDeclare(){
+
+            // 1) var 중복선언 가능(단점)
+            var userId = "user01";
+            console.log(userId);
+
+            var userId = "user02";
+            console.log(userId);
+
+            userId = "user03"; // 재할당
+            console.log(userId);
+            
+            console.log("------------------------------");
+
+            // 2) let은 중복선언 불가, 재할당 가능
+            let userPwd = "pass01";
+            console.log(userPwd);
+
+            //let userPwd = "pass02";
+            //console.log(userPwd);
+
+            // 중복은 불가하지만 재할당은 가능
+            userPwd = "pass02";
+            console.log(userPwd);
+
+            console.log("------------------------------");
+
+            //3) const는 중복선언 불가능, 재할당 불가능 (상수같은 개념 == 한번 초기화된 값 변경 불가)
+            const userName = "김혜선"
+            console.log(userName);
+
+            //const userName = "짱보미"
+            //console.log(userName);
+
+            //userName = "김혜선";
+            //console.log(userName);
+
+            // var는 자유롭게 변수 선언, 사용할 수 있다는 장점이 있지만
+            // 중복된 변수가 남발 할 수 있고 의도치 않게 값이 변경되어있을 수 있음 => 가장 큰 단점
+            // => 보완되어서 나온게 let, const임!
+
+            // 권장사항 : let, const를 위주로 사용
+        }
+
+        function diffScope(){
+            // 1) var는 function[al] scope == 변수가 선언된 함수영역 내에서 사용 가능
+            var name = "김혜선";
+            console.log(name);
+
+            //scopeTest();
+
+            if(true){
+                var age = 20;
+            }
+            console.log(age); // 사용가능
+
+            for(var i=0; i<10; i++){
+
+            }
+            console.log(i); // 사용가능
+
+            console.log("------------------------------");
+
+            // 2) let, const는 block scope == 변수가 선언된 블럭 내에서만 사용 가능(자바와 유사)
+            if(true){
+                const hobby = "운동";
+                let gender = 'M';
+            }
+
+            //console.log(hobby); 사용 불가능
+            //console.log(gender); 사용 불가능
+        }
+
+        function scopeTest(){
+            console.log(name);
+        }
+    </script>
+
+    <h3>* 변수 선언 위치에 따른 전역변수/지역변수</h3>
+    <script>
+
+        //특정 함수영역 밖에 선언된 변수는 전역변수로 잡힘 (전역변수는 어디든 다 사용 가능)
+        var declareVar = "var로 전역변수";
+        let declareLet = "let로 전역변수";
+        const declareConst = "const로 전역변수";
+
+        declareNone = "그냥 전역변수";
+
+        //window.onload = function(){ 해당 이 문서가 다 로딩된 직후에 실행시킬 코드}
+        window.onload = function(){
+
+            // 전역변수와 동일한 이름으로 지역변수 선언
+            var declareVar = "var로 지역변수";
+            let declareLet = "let로 지역변수";
+            const declareConst = "const로 지역변수";
+
+            //console.log("문서로딩 완");
+            console.log(declareVar);
+            console.log(declareLet);
+            console.log(declareConst);
+            // 기본적으로 지역변수명이랑 전역변수명이랑 중복될경우=>지역변수를 우선시 해서 찾게됨
+            console.log(declareNone);
+
+            console.log("------------------------------");
+
+            // 이때 전역변수에 접근하고자 한다면? => window. 또는 this.으로 접근하면됨(var만 가능)
+            console.log(window.declareVar);
+            console.log(this.declareVar);
+            //let, const같은 경우는 안됨 => undefined뜸
+            console.log(window.declareLet);
+            console.log(this.declareConst);
+
+            console.log("------------------------------");
+
+            declareInner = "얜 뭘까";
+            console.log(declareInner);
+            console.log(window.declareInner);
+            console.log(this.declareInner);
+            // 특정 함수 내에 var, let, const를 사용하지 않고 선언된 변수는 전역변수로 잡힘!
+
+            test();
+
+        }
+
+        function test(){
+            console.log(declareInner);
+        }
+        
+    </script>
+
+    <hr>
+
+    <h3>* 자료형</h3>
+    <p>
+        변수 선언시 자료형을 별도로 지정하지 않음 (자료형의 개념이 없는건 아님!) <br>
+        => 변수에 대입되는 값(리터럴)에 따라서 알아서 자료형이 결정됨
+    </p>
+
+    <h4>자바스크립트의 자료형</h4>
+    <ul>
+        <li>string(문자열)</li>
+        <li>number(숫자)</li>
+        <li>boolean(논리값)</li>
+        <li>object(객체)</li>
+        <li>function(함수)</li>
+        <li>undefined(초기화가 안된 변수)</li>
+    </ul>
+
+    <button onclick="typeTest();">자료형테스트</button>
+    <div id="area" style="border: 1px solid black;"></div>
+
+    <script>
+        function typeTest(){
+            const name = "김혜선"; // 문자열값 제시시 홑따옴표든 쌍따옴표든 둘다 가능
+            const age = 19;
+            const flag = true;
+
+            const hobby = ["영화","음악","낮잠"];           // 배열객체
+            const divEl = document.querySelector("#area"); // div요소객체
+            const user = {
+                name:"김혜선", 
+                age:20, 
+                id:"user01"
+            };
+
+            const testFn = function(){
+                alert("뻐꾹");
+            };
+
+            //const noVal; //const는 상수라서 선언과 동시에 초기화 해야됨
+            let noVal;
+
+            console.log(name);
+            console.log(age);
+            console.log(flag);
+            console.log(hobby);
+            console.log(divEl);
+            console.log(user);
+            console.log(testFn);
+            console.log(noVal);
+
+            // 화면에 출력 (텍스트로 출력되기 때문에 콘솔출력과 결과 다를 수 있음)
+            // 자료형 확인시 사용하는 함수 : typeof(변수명)
+            divEl.innerHTML = name + ", " + typeof(name) + "<br>";
+            divEl.innerHTML += age + ", " + typeof(age) + "<br>";
+            divEl.innerHTML += flag + ", " + typeof(flag) + "<br>";
+
+            divEl.innerHTML += hobby + ", " + typeof(hobby) + "<br>";
+            divEl.innerHTML += divEl + ", " + typeof(divEl) + "<br>";
+            divEl.innerHTML += user + ", " + typeof(user) + "<br>";
+            
+            divEl.innerHTML += testFn + ", " + typeof(testFn) + "<br>";
+            divEl.innerHTML += noVal + ", " + typeof(noVal) + "<br>";
+
+        }
+    </script>
+
+
+</body>
+</html>
