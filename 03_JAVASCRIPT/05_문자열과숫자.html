@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .area{
+            width: 300px;
+            border: 1px solid black;
+        }
+        .small{height: 200px;}
+        .big{height: 450px;}
+    </style>
+</head>
+<body>
+    
+    <h1>문자열과 숫자</h1>
+    <h3>* 문자열 관련 기본메소드</h3>
+    <button onclick="stringTest();">문자열처리메소드</button>
+    <div id="area1" class="area big"></div>
+
+    <script>
+        function stringTest(){
+            
+            const area1 = document.getElementById("area1"); //div요소객체가 담겨있음
+
+            const str1 = "Hello World";
+
+            area1.innerHTML = "str1 : " + str1 + "<br>";
+
+            area1.innerHTML += "toUpperCase() : " + str1.toUpperCase() + "<br>";
+            area1.innerHTML += "toLowerCase() : " + str1.toLowerCase() + "<br>";
+
+            area1.innerHTML += "문자열의 길이 : " + str1.length + "<br>";
+
+            for(let i=0; i<str1.length; i++){
+                area1.innerHTML += i + "번째 인덱스 : " + str1.charAt(i) + "<br>";
+            }
+
+            area1.innerHTML += "앞에서부터 첫 l의 위치 : " + str1.indexOf("l") + "<br>";
+            area1.innerHTML += "뒤에서부터 첫 l의 위치 : " + str1.lastIndexOf("l") + "<br>";
+            area1.innerHTML += "앞에서부터 첫 a의 위치 : " + str1.indexOf("a") + "<br>";
+            // 해당 문자가 존재 하지 않으면 -1 출력
+
+            area1.innerHTML += "substring(시작인덱스) : " + str1.substring(6) + "<br>";
+            //시작인덱스 부터 ~ 끝까지
+            area1.innerHTML += "substring(시작인덱스, 끝인덱스) : " + str1.substring(0, 2) + "<br>";
+            //내가 제시한 끝 인덱스 숫자 이전까지만 추출됨
+
+            const str2 = "사과,바나나,복숭아,키위";
+            const fruits = str2.split(","); // ["사과","바나나","복숭아","키위"]
+
+            area1.innerHTML += "fruits : " + fruits + "<br>";
+            area1.innerHTML += "fruits의 자료형 : " + typeof(fruits) + "<br>";
+
+            console.log(fruits);
+
+        }
+    </script>
+
+    <br>
+
+    <h3>* 문자열 관련 html메소드</h3>
+    <button onclick="stringHtmlTest();">문자열 html메소드</button>
+    <div id="area2" class="area big"></div>
+
+    <script>
+        function stringHtmlTest(){
+            const area2 = document.getElementById("area2");
+
+            const str = "javascript";
+
+            area2.innerHTML = "str : " + str + "<br>";
+            area2.innerHTML += "bold() : " + str.bold() + "<br>"; // <b>
+            area2.innerHTML += "italics() : " + str.italics() + "<br>"; // <i>
+            area2.innerHTML += "small() : " + str.small() + "<br>"; // <small>
+            area2.innerHTML += "sub() : " + str.sub() + "<br>"; //<sub>
+            area2.innerHTML += "sup() : " + str.sup() + "<br>"; //<sup>
+
+            area2.innerHTML += "link() : " + str.link("http://www.naver.com") + "<br>"; //<a href="">
+
+        }
+    </script>
+
+    <hr>
+
+    <h3>* 숫자(수학) 관련 메소드</h3>
+    <button onclick="mathTest();">수학관련메소드</button>
+    <div id="area3" class="area small"></div>
+
+    <script>
+        function mathTest(){
+            const area3 = document.querySelector("#area3");
+
+            // 자바스크립트에서 Math 내장객체 제공
+            area3.innerHTML = "절대값 : " + Math.abs(-123) + "<br>";
+            area3.innerHTML += "랜덤값 : " + Math.random() + "<br>";
+            area3.innerHTML += "반올림 : " + Math.round(123.658) + "<br>";
+            area3.innerHTML += "반올림 : " + Math.round(123.658, 1) + "<br>";
+            // 반올림 위치 지정 불가
+            area3.innerHTML += "버림 : " + Math.floor(123.678) + "<br>";
+            area3.innerHTML += "올림 : " + Math.ceil(123.678) + "<br>";
+
+        }
+    </script>
+
+    <hr>
+
+    <h3>* 문자열과 숫자간의 산술연산 / 형변환</h3>
+
+    <button onclick="arithmetic();">산술연산</button>
+    <div id="area4" class="area big"></div>
+
+    <script>
+        function arithmetic(){
+
+            const test1 = 7 + 7; //14
+            const test2 = 7 + "7"; // "77"
+            const test3 = "7" + 7; // "77"
+            const test4 = "7" + 7 + 7; // "77" + 7 => "777"
+            const test5 = "7" + (7 + 7); // "7" + 14 => "714"
+
+            // 덧셈 외의 산술연산 가능!
+            // 문자열이 자동형변환으로 숫자로 변환된 뒤 산술연산됨
+            // 단, 문자열에는 숫자만 존재 해야됨
+            const test6 = "7" - 7; // 0
+            const test7 = "7" * 7; // 49
+            const test8 = "7" / 7; // 1
+
+            const area4 = document.querySelector("#area4");
+            area4.innerHTML = "test6 : " + test6 + "<br>";
+            area4.innerHTML += "test7 : " + test7 + "<br>";
+            area4.innerHTML += "test8 : " + test8 + "<hr>";
+
+            // 덧셈 연산시에는 자동형변환 안되고 연이어서 한 문자열로 됨
+
+            // 강제형변환(문자열 => 숫자형)
+            // 1) Number(문자열)
+            // 2) parseInt(문자열)
+            // 3) parseFloat(문자열)
+
+            // 2, "3"
+            const test9 = 2 + "3"; // "23"
+
+            const test10 = 2 + Number("3"); //5
+            const test11 = 2 + parseInt("3"); //5
+            const test12 = 2 + parseFloat("3"); //5
+
+            area4.innerHTML += "test10 : " + test10 + "<br>";
+            area4.innerHTML += "test11 : " + test11 + "<br>";
+            area4.innerHTML += "test12 : " + test12 + "<br>";
+
+            // 2, "1.234"
+            const test13 = 2 + "1.234"; // "21.234"
+
+            const test14 = 2 + Number("1.234"); //
+            const test15 = 2 + parseInt("1.234"); // 정수형변환
+            const test16 = 2 + parseFloat("1.234"); //
+
+            area4.innerHTML += "test14 : " + test14 + "<br>";
+            area4.innerHTML += "test15 : " + test15 + "<br>";
+            area4.innerHTML += "test16 : " + test16;
+
+        }
+    </script>
+
+    <hr>
+
+    정수1 : <input type="number" id="num1"> <br>
+    정수2 : <input type="number" id="num2"> <br>
+
+    <div id="result">결과없음</div>
+
+    <button onclick="plus();">덧셈</button>
+
+    <script>
+        function plus(){
+
+            // input요소의 value값은 무조건string(문자열)타입
+            const num1 = document.getElementById("num1").value; //"10"
+            const num2 = document.getElementById("num2").value; // "20"
+
+            //const sum = num1 + num2; // "10" + "20" =>"1020"
+            const sum = Number(num1) + Number(num2); // 10 + 20 => 30
+
+            document.getElementById("result").innerHTML = "결과 : " + sum;
+        }
+    </script>
+
+</body>
+</html>
