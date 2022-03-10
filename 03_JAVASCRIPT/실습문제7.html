@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제7</title>
+    <style>
+        .area{border: 2px solid red;
+              width: 700px;
+              height: 20px;}
+    </style>
+</head>
+<body>
+    <h1>배열 실습 문제2</h1>
+    <h3>다음 보기에 있는 문자열을 가지고 정답과 같이 만드세요.(별도의 문자열을 쓰면 안됨)<br>
+        그리고 출력 부분에 출력하도록 하면 됩니다. 정답: brlove
+    </h3>
+
+    <fieldset>
+        <legend>보기</legend>
+        <label id="stringla1">r b</label><br>
+        <label id="stringla2">e v o l</label><br>
+    </fieldset>
+    <br>
+    <div id="area1" class="area"></div>
+    <br>
+    <button onclick="cheak();">처리</button>
+
+    <script>
+        function cheak(){
+            const s1 = document.getElementById("stringla1").innerHTML.split(' ');
+            const s2 = document.getElementById("stringla2").innerHTML.split(' ');
+
+            area1.innerHTML += s1[1];
+            area1.innerHTML += s1[0];
+            area1.innerHTML += s2[3];
+            area1.innerHTML += s2[2];
+            area1.innerHTML += s2[1];
+            area1.innerHTML += s2[0];
+
+        }
+    </script>
+</body>
+</html>
