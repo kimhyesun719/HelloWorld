@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습8</title>
+    <style>
+        .area{border: 2px solid red;
+              width: 600px;
+              height: 20px;
+              }
+    </style>
+</head>
+<body>
+    h1>배열 실습 문제3</h1>
+    <h3>문자열을 여러 개 입력 받은 후 출력 버튼 클릭시 입력했던 모든 문자열이 출력되도록 만드세요.<br>
+        예) 개구리 -> 입력, 바나나 -> 입력, 복숭아 -> 입력 <br>
+        출력:개구리,바나나,복숭아
+    </h3>
+    <fieldset>
+        <legend>입력</legend>
+        <input type="text" id="strInput">
+        <button onclick="input();">입력</button>
+    </fieldset>
+    <br>
+    <div id="print2" class="area"></div>
+    <br>
+    <button onclick="printTest();">출력</button>
+
+    <script>
+        const data = new Array(); 
+        
+        function input(){
+        	const strInput = document.getElementById("strInput");
+        	data.push(strInput.value);
+        	strInput.value="";
+    	}   
+    	
+    	function printTest(){
+        	const print2 = document.getElementById("print2");
+        	const str = data.join(',');
+        	print2.innerHTML = str;
+    	}
+    </script>
+</body>
+</html>
